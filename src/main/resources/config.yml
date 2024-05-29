@@ -1,0 +1,7 @@
+# File to use in /lang folder, to create more just copy-paste the base lang file.
+lang: en-en
+
+# This will prevent plugin enabling/disabling fly for a player in creative
+prevent_fly_in_creative: true
+
+

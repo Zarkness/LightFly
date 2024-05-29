@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="LightFly:jar">
+    <output-path>$USER_HOME$/OneDrive/Desktop/Darklight but oneblock/SERVER DE MIERDA DE PRUEBA/plugins</output-path>
+    <root id="archive" name="LightFly.jar">
+      <element id="module-output" name="LightFly" />
+    </root>
+  </artifact>
+</component>
