@@ -4,4 +4,7 @@ lang: en-en
 # This will prevent plugin enabling/disabling fly for a player in creative
 prevent_fly_in_creative: true
 
+# Send tempfly message
+send_temp_fly_message: false
+
 

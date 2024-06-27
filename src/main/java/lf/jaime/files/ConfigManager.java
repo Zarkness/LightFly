@@ -7,6 +7,7 @@ public class ConfigManager {
     private final CustomConfig configFile;
     private LightFly plugin;
     private boolean preventInGamemode;
+    private boolean sendTempFlyMessage;
     private String lang;
 
 
@@ -20,6 +21,7 @@ public class ConfigManager {
         FileConfiguration fileConfiguration = configFile.getConfig();
         lang = fileConfiguration.getString("lang");
         preventInGamemode = fileConfiguration.getBoolean("prevent_fly_in_creative");
+        sendTempFlyMessage = fileConfiguration.getBoolean("send_temp_fly_message");
     }
 
     public boolean isPreventInGamemode() {
@@ -30,4 +32,7 @@ public class ConfigManager {
         return lang;
     }
 
+    public boolean isSendTempFlyMessage() {
+        return sendTempFlyMessage;
+    }
 }

@@ -55,6 +55,11 @@ public class TempFly implements CommandExecutor {
         playerTimeManager.addPlayer(player, seconds);
         sender.sendMessage(MessageUtils.getMessage(messages.getPrefix() + messages.getTempFlySuccess()
                 .replace("%player%", player.getName()).replace("%time%", String.valueOf(seconds))));
+
+        if(plugin.getConfigManager().isSendTempFlyMessage()){
+            player.sendMessage(MessageUtils.getMessage(messages.getPrefix() + messages.getTempFlyMessage()
+                    .replace("%time%", String.valueOf(seconds))));
+        }
         return true;
     }
 

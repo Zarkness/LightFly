@@ -30,6 +30,7 @@ public class MessagesManager {
     private String badUsageTempfly;
     private String invalidNumber;
     private String tempFlySuccess;
+    private String tempFlyMessage;
 
     public void loadMessages(){
         langFile.registerConfig();
@@ -51,6 +52,7 @@ public class MessagesManager {
         badUsageTempfly = messages.getString("bad_usage_tempfly");
         invalidNumber = messages.getString("invalid_number");
         tempFlySuccess = messages.getString("temp_fly_success");
+        tempFlyMessage = messages.getString("temp_fly_message");
     }
 
     public String getInvalidNumber() {
@@ -119,5 +121,9 @@ public class MessagesManager {
 
     public String getTempFlySuccess() {
         return tempFlySuccess;
+    }
+
+    public String getTempFlyMessage() {
+        return tempFlyMessage;
     }
 }
