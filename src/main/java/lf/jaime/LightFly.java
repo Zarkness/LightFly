@@ -5,7 +5,10 @@ import lf.jaime.commands.MainCommand;
 import lf.jaime.commands.TempFly;
 import lf.jaime.files.ConfigManager;
 import lf.jaime.files.MessagesManager;
+import lf.jaime.placeholders.LightFlyPlaceholderExpansion;
+import lf.jaime.utils.MessageUtils;
 import lf.jaime.utils.PlayerTimeManager;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Objects;
@@ -22,7 +25,12 @@ public class LightFly extends JavaPlugin {
         registerCommands();
         Metrics metrics = new Metrics(this, 22065);
 
-    }
+        if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
+            new LightFlyPlaceholderExpansion(this).register();
+            Bukkit.getConsoleSender().sendMessage(MessageUtils.getMessage(messagesManager.getPrefix() + "&aRegistered placeholders!"));
+        }
+
+        }
 
     public void onDisable(){
         playerTimeManager.shutdown();

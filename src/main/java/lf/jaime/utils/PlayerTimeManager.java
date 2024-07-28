@@ -45,6 +45,13 @@ public class PlayerTimeManager {
         playerTimers.remove(player);
     }
 
+    public int getRemainingTime(Player player){
+        if(playerTimers.containsKey(player)){
+            return playerTimers.get(player);
+        }
+        return 0;
+    }
+
     public void shutdown(){
         scheduler.shutdown();
     }
