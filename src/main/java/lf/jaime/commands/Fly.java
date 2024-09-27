@@ -29,26 +29,31 @@ public class Fly implements CommandExecutor {
                     !sender.hasPermission("lf.fly.*") &&
                     !sender.hasPermission("lf.fly")) {
 
-                sender.sendMessage(getMessage(prefix + messages.getNoPermission()));
+                sender.sendMessage(getMessage(messages.getNoPermission()
+                .replace("%prefix%", messages.getPrefix())));
                 return true;
             }
 
             if(!isPlayer(sender)){
-                sender.sendMessage(getMessage(messages.getPrefix() + messages.getBadUsageFly()));
+                sender.sendMessage(getMessage(messages.getBadUsageFly()
+                .replace("%prefix%", messages.getPrefix())));
                 return true;
             }
             player = (Player) sender;
             if(player.getGameMode() == GameMode.CREATIVE && preventFlyInCreative){
-                player.sendMessage(getMessage(prefix + messages.getGamemodeNotAllowed()));
+                player.sendMessage(getMessage(messages.getGamemodeNotAllowed()
+                .replace("%prefix%", messages.getPrefix())));
                 return true;
             }
 
             boolean result = alternateFly(player);
             if(result){
-                player.sendMessage(getMessage(prefix + messages.getFlyEnabled()));
+                player.sendMessage(getMessage(messages.getFlyEnabled()
+                .replace("%prefix%", messages.getPrefix())));
 
             } else {
-                player.sendMessage(getMessage(prefix + messages.getFlyDisabled()));
+                player.sendMessage(getMessage(messages.getFlyDisabled()
+                .replace("%prefix%", messages.getPrefix())));
             }
             return true;
         }
@@ -57,19 +62,22 @@ public class Fly implements CommandExecutor {
                     !sender.hasPermission("lf.fly.*") &&
                     !sender.hasPermission("lf.fly")) {
 
-                sender.sendMessage(getMessage(prefix + messages.getNoPermission()));
+                sender.sendMessage(getMessage(messages.getNoPermission()
+                .replace("%prefix%", messages.getPrefix())));
                 return true;
             }
 
 
             player = Bukkit.getPlayer(args[0]);
             if(player == null){
-                sender.sendMessage(getMessage(prefix + messages.getUnknownPlayer()));
+                sender.sendMessage(getMessage(messages.getUnknownPlayer()
+                .replace("%prefix%", messages.getPrefix())));
                 return true;
             }
             if(player.getGameMode() == GameMode.CREATIVE && preventFlyInCreative){
-                player.sendMessage(getMessage(prefix + messages.getGamemodeNotAllowedOthers()
-                        .replace("%player%", player.getName())));
+                player.sendMessage(getMessage(messages.getGamemodeNotAllowedOthers()
+                        .replace("%player%", player.getName())
+                        .replace("%prefix%", messages.getPrefix())));
                 return true;
             }
             boolean enable = !player.getAllowFlight();
@@ -82,23 +90,26 @@ public class Fly implements CommandExecutor {
                     !sender.hasPermission("lf.fly.*") &&
                     !sender.hasPermission("lf.fly")) {
 
-                sender.sendMessage(getMessage(prefix + messages.getNoPermission()));
+                sender.sendMessage(getMessage(messages.getNoPermission()));
                 return true;
             }
 
             player = Bukkit.getPlayer(args[0]);
             if(player == null){
-                sender.sendMessage(getMessage(prefix + messages.getUnknownPlayer().replace("%player%", args[0])));
+                sender.sendMessage(getMessage(messages.getUnknownPlayer().replace("%player%", args[0])
+                .replace("%prefix%", messages.getPrefix())));
                 return true;
             }
             if(player.getGameMode() == GameMode.CREATIVE && preventFlyInCreative){
-                player.sendMessage(getMessage(prefix + messages.getGamemodeNotAllowedOthers()
-                        .replace("%player%", player.getName())));
+                player.sendMessage(getMessage(messages.getGamemodeNotAllowedOthers()
+                        .replace("%player%", player.getName())
+                        .replace("%prefix%", messages.getPrefix())));
                 return true;
             }
 
             if(!isValidFlyState(args[1])){
-                sender.sendMessage(getMessage(prefix + messages.getBadUsageOnOff()));
+                sender.sendMessage(getMessage(messages.getBadUsageOnOff()
+                .replace("%prefix%", messages.getPrefix())));
                 return true;
             }
 
@@ -119,13 +130,16 @@ public class Fly implements CommandExecutor {
         String senderMessage = enable ? messages.getFlyEnabledOther() : messages.getFlyDisabledOther();
 
         if (enable && !player.getAllowFlight()) {
-            player.sendMessage(getMessage(messages.getPrefix() + playerMessage));
+            player.sendMessage(getMessage(playerMessage
+            .replace("%prefix%", messages.getPrefix())));
         } else if (!enable && player.getAllowFlight()) {
-            player.sendMessage(getMessage(messages.getPrefix() + playerMessage));
+            player.sendMessage(getMessage(playerMessage
+            .replace("%prefix%", messages.getPrefix())));
         }
 
-        sender.sendMessage(getMessage(messages.getPrefix() + senderMessage
-                .replace("%player%", player.getName())));
+        sender.sendMessage(getMessage(senderMessage
+                .replace("%player%", player.getName())
+                .replace("%prefix%", messages.getPrefix())));
         player.setAllowFlight(enable);
     }
 

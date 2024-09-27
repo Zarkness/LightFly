@@ -31,6 +31,10 @@ public class MessagesManager {
     private String invalidNumber;
     private String tempFlySuccess;
     private String tempFlyMessage;
+    private String tempFlySet;
+    private String tempFlyAdd;
+    private String tempFlyRemove;
+    private String tempFlyCheck;
 
     public void loadMessages(){
         langFile.registerConfig();
@@ -53,6 +57,10 @@ public class MessagesManager {
         invalidNumber = messages.getString("invalid_number");
         tempFlySuccess = messages.getString("temp_fly_success");
         tempFlyMessage = messages.getString("temp_fly_message");
+        tempFlySet = messages.getString("temp_fly_message");
+        tempFlyAdd = messages.getString("temp_fly_add");
+        tempFlyRemove = messages.getString("temp_fly_remove");
+        tempFlyCheck = messages.getString("temp_fly_check");
     }
 
     public String getInvalidNumber() {
@@ -123,7 +131,19 @@ public class MessagesManager {
         return tempFlySuccess;
     }
 
-    public String getTempFlyMessage() {
-        return tempFlyMessage;
+    public String getTempFlyCheck() {
+        return tempFlyCheck;
+    }
+
+    public String getTempFlyAdd() {
+        return tempFlyAdd;
+    }
+
+    public String getTempFlySet() {
+        return tempFlySet;
+    }
+
+    public String getTempFlyRemove() {
+        return tempFlyRemove;
     }
 }

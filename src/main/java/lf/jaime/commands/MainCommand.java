@@ -17,7 +17,8 @@ public class MainCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String alias, String[] args){
         MessagesManager messages = plugin.getMessagesManager();
         if(!sender.hasPermission("lf.admin")){
-            sender.sendMessage(MessageUtils.getMessage(messages.getPrefix() + messages.getNoPermission()));
+            sender.sendMessage(MessageUtils.getMessage(messages.getNoPermission()
+            .replace("%prefix%", messages.getPrefix())));
             return true;
         }
         if(args.length == 0){
@@ -26,12 +27,14 @@ public class MainCommand implements CommandExecutor {
         }
         if(args[0].equalsIgnoreCase("reload")){
             messages.loadMessages();
-            sender.sendMessage(MessageUtils.getMessage(messages.getPrefix() + messages.getReload()));
+            sender.sendMessage(MessageUtils.getMessage(messages.getReload()
+            .replace("%prefix%", messages.getPrefix())));
             return true;
         }
         if(args[0].equalsIgnoreCase("version")){
             String version = plugin.getDescription().getVersion();
-            sender.sendMessage(MessageUtils.getMessage(messages.getPrefix() + version));
+            sender.sendMessage(MessageUtils.getMessage(version
+            .replace("%prefix%", messages.getPrefix())));
         }
         return true;
     }
